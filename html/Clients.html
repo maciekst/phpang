@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div ng-controller="Klient">
+        <button ng-click="getAllClients()">getAllClients</button>
+        <div ng-show="clientsList.length > 0">
+            <table>
+                <tr>
+                    <th>ID</th>
+                    <th>Imię</th>
+                    <th>Adres</th>
+                    <th>Telefon</th>
+                    <th>Email</th>
+                </tr>
+                <tr ng-repeat="client in clientsList">
+                    <td>{{client.id}}</td>
+                    <td>{{client.nazwa}}</td>
+                    <td>{{client.adres}}</td>
+                    <td>{{client.telefon}}</td>
+                    <td>{{client.email}}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

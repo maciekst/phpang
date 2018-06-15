@@ -1,25 +1,22 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Nasze PHPoAngular</title>
-  <meta charset="UTF-8">
-  <link rel="stylesheet" href="stylowanie.css" type="text/css">
-  <script src="node_modules\angular\angular.min.js"></script>
-</head>
-<body ng-app="apka">
-<script src="classes\Tester.js"></script>
+  <head>
+    <title>Nasze PHPoAngular</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="stylowanie.css" type="text/css">
+    <script src="node_modules\angular\angular.min.js"></script>
+  </head>
+  <body ng-app="apka">
+    <script src="classes\ApplicationInit.js"></script>
+    <script src="classes\Tester.js"></script>
+    <script src="classes\KlientController.js"></script>
+    <script src="classes\ProductsController.js"></script>
+    <script src="classes\ControllPanelController.js"></script>
 
-<P>ja działam, 2 + 2 = {{ 2 + 2 }}</P>
-testowe api -> localhost/phpang/api/test.php
+    <div ng-include="'html/controll_panel.html'"></div>
 
-<div ng-controller="Tester">
-  <ul>
-    <li ng-repeat="x in testData.Users">
-      {{ x.name }}, lat {{ x.age }}
-    </li>
-  </ul>
-	<p>auto Jane: {{ testData.Users[1].car }}</p>
-</div>
+    <!--<div ng-include="'html/Clients.html'"></div>-->
+    <!--<div ng-include="'html/products.html'"></div>-->
 
-</body>
+  </body>
 </html>

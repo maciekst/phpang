@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div ng-controller="ControlPanelController">
+    <table>
+        <tr>
+            <td>
+                <button ng-click="showClientsPanel()">show clients</button>
+            </td>
+            <td>
+                <button ng-click="showProductsPanel()">show products</button>
+            </td>
+        </tr>
+    </table>
+    <div ng-include="'html/Clients.html'" ng-show="activePanel == clientViewName"></div>
+    <div ng-include="'html/products.html'" ng-show="activePanel == productsViewName"></div>
+</div>
+</body>
+</html>

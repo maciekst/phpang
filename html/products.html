@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div ng-controller="ProductController">
+        <button ng-click="getAllProducts()">getAllProducts</button>
+        <div ng-show="products.length > 0">
+            <table>
+                <tr>
+                    <th>ID</th>
+                    <th>Nazwa dostawcy</th>
+                    <th>Nazwa produktu</th>
+                    <th>Opis</th>
+                    <th>Ilość</th>
+                </tr>
+                <tr ng-repeat="product in products">
+                    <td>{{product.id}}</td>
+                    <td>{{product.dostawca.nazwa}}</td>
+                    <td>{{product.nazwa}}</td>
+                    <td>{{product.opis}}</td>
+                    <td>{{product.ilosc}}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
