@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div ng-controller="SuppliersController">
+        <button ng-click="getAllSuppliers()">getAllSuppliers</button>
+
+        <div ng-show="suppliers.length > 0">
+            <table>
+                <tr>
+                    <th>ID</th>
+                    <th>Nazwa</th>
+                    <th>Adres</th>
+                    <th>Telefon</th>
+                    <th>Email</th>
+                </tr>
+                <tr ng-repeat="supplier in suppliers">
+                    <td>{{supplier.id}}</td>
+                    <td>{{supplier.nazwa}}</td>
+                    <td>{{supplier.adres}}</td>
+                    <td>{{supplier.telefon == null ? "---" : supplier.telefon }}</td>
+                    <td>{{supplier.email == null ? "---" : supplier.email }}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

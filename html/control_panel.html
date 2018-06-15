@@ -14,10 +14,18 @@
             <td>
                 <button ng-click="showProductsPanel()">show products</button>
             </td>
+            <td>
+                <button ng-click="showOrdersPanel()">show orders panel</button>
+            </td>
+            <td>
+                <button ng-click="showSupplierPanel()">show suppliers panel</button>
+            </td>
         </tr>
     </table>
-    <div ng-include="'html/Clients.html'" ng-show="activePanel == clientViewName"></div>
+    <div ng-include="'html/clients.html'" ng-show="activePanel == clientViewName"></div>
     <div ng-include="'html/products.html'" ng-show="activePanel == productsViewName"></div>
+    <div ng-include="'html/orders.html'" ng-show="activePanel == ordersViewName"></div>
+    <div ng-include="'html/suppliers.html'" ng-show="activePanel == suppliersViewName"></div>
 </div>
 </body>
 </html>
