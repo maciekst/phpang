@@ -5,11 +5,11 @@
     <title>Title</title>
 </head>
 <body>
-    <div ng-controller="OrdersController">
+    <div ng-controller="OrdersController" class="concretePanel">
         <button ng-click="getAllOrders()">getAllOrders</button>
 
         <div ng-show="ordersList.length > 0">
-            <table>
+            <table class="concreteTable">
                 <tr>
                     <th>ID</th>
                     <th>Ilość</th>

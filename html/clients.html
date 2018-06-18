@@ -5,10 +5,10 @@
     <title>Title</title>
 </head>
 <body>
-    <div ng-controller="ClientsController">
+    <div ng-controller="ClientsController" class="concretePanel">
         <button ng-click="getAllClients()">getAllClients</button>
         <div ng-show="clientsList.length > 0">
-            <table>
+            <table class="concreteTable">
                 <tr>
                     <th>ID</th>
                     <th>Imię</th>

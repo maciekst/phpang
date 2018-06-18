@@ -1,4 +1,8 @@
+html {
+	height: 100%;
+}
 body
 	{
-    background-color: white;
+    background : linear-gradient(to bottom right, aqua, mediumseagreen);
+	height: 100%;
 	}
