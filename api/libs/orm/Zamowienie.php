@@ -48,5 +48,63 @@ class Zamowienie {
       return $stmt;
     }
 
+    function getById($id) {
+        $query = "SELECT z.`ID`, z.`TOWAR` as towarid, t.`NAZWA` as towarNazwa, z.`ILOSC` as ilosc, z.`KLIENT` as klient,
+            k.`NAZWA` as klientNazwa,
+            z.`IDENTYFIKATOR` as identyfikator, z.`SPRZEDAZ` as sprzedaz
+            FROM `zamowienia` z
+            JOIN `towary` t ON t.`ID` = z.`TOWAR`
+            JOIN `klienci` k ON k.`ID` = z.`KLIENT`
+            WHERE z.`ID`=" . $id . ";";
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute();
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        extract($row);
+        $towar_item = array(
+            "id" => $id,
+            "towar" => $towarid,
+            "towarNazwa" => $towarNazwa,
+            "ilosc" => $ilosc,
+            "klient" => $klient,
+            "klientNazwa" => $klientNazwa,
+            "identyfikator" => $identyfikator,
+            "sprzedaz" => $sprzedaz
+        );
+        return $towar_item;
+    }
+
+    function dodajZamowienie($klient_arr) {
+        $query = "INSERT INTO `zamowienia`(`TOWAR`, `ILOSC`, `KLIENT`, `IDENTYFIKATOR`, `SPRZEDAZ`) "
+                . "VALUES (" . $klient_arr["towar"] . "," . $klient_arr["ilosc"] . ","
+                . "" . $klient_arr["klient"] . ",'" . $klient_arr["identyfikator"] . "','"
+                . $klient_arr["sprzedaz"] . "');";
+        $stmt = $this->conn->prepare($query);
+        return $stmt->execute();
+    }
+
+    function edytujZamowienie($klient_arr) {
+        $update = "";
+        if (isset($klient_arr["towar"]))
+            $update .= "`TOWAR`='" . $klient_arr["towar"] . "',";
+        if (isset($klient_arr["ilosc"]))
+            $update .= "`ILOSC`='" . $klient_arr["ilosc"] . "',";
+        if (isset($klient_arr["klient"]))
+            $update .= "`KLIENT`='" . $klient_arr["klient"] . "',";
+        if (isset($klient_arr["identyfikator"]))
+            $update .= "`IDENTYFIKATOR`='" . $klient_arr["identyfikator"] . "',";
+        if (isset($klient_arr["sprzedaz"]))
+            $update .= "`SPRZEDAZ`='" . $klient_arr["sprzedaz"] . "',";
+        $query = "UPDATE `zamowienia` SET " . substr($update, 0, -1)
+                . "WHERE `ID`=" . $klient_arr["id"] . ";";
+        $stmt = $this->conn->prepare($query);
+        return $stmt->execute();
+    }
+
+    function usunZamowienie($klient_id) {
+        $query = "DELETE FROM `zamowienia` WHERE `ID`=" . $klient_id . ";";
+        $stmt = $this->conn->prepare($query);
+        return $stmt->execute();
+    }
+
 }
 ?>

@@ -13,16 +13,16 @@ localhost/<nazwa-projektu>/rest-api/<nazwa-klasy>/<nazwa-akcji>/<dodatkowe-param
 Dostępne klasy: towary, klienci, dostawcy, zamowienia
 
 <nazwa-akcji>
-Dostępne akcje: list, add, edit, remove
+Dostępne akcje: lista, dodaj, edytuj, usun
 
 <dodatkowe-parametry>
-Rozdzielamy je podwójnym przecinkiem -> ,,
+zapisane jako obiekt w json :-)
 
 Szczegóły akcji!
-list - nie przyjmuje parametrów, zawsze zwraca wszystko
+lista - nie przyjmuje parametrów, zawsze zwraca wszystko
+dodaj - parametr z obiektem w json bez id np. klient - http://localhost:9090/rest-api/klienci/dodaj/{"nazwa":"k2","adres":"adr2","telefon":"tel","email":"mail2"}
+edytuj - parametry w json - id oraz parametry do zmiany, np. http://localhost:9090/rest-api/klienci/edytuj/{"id":4,"nazwa":"k2test"}
+usun - jeden parametr - id, np. http://localhost:9090/rest-api/klienci/usun/4
+podglad - jeden parametr - id, np. http://localhost:9090/rest-api/klienci/podglad/1
 
-## 3. Dzialajace przyklady wywolan api:
-http://localhost/<nazwa-projektu>/rest-api/klienci
-http://localhost/<nazwa-projektu>/rest-api/towary
-http://localhost/<nazwa-projektu>/rest-api/dostawcy
-http://localhost/<nazwa-projektu>/rest-api/zamowienia
+Nazwy obiektów można sprawdzić wywolujac liste. Sa to te niezagniezdzone.
