@@ -3,4 +3,4 @@ RewriteEngine on
 #rewrite api
 RewriteRule ^rest-api/([A-Za-z0-9-]+)/([A-Za-z0-9-]+)/(.+)/?$ api/api.php?module=$1&action=$2&extra-param=$3 [NC,L]
 RewriteRule ^rest-api/([A-Za-z0-9-]+)/([A-Za-z0-9-]+)/?$ api/api.php?module=$1&action=$2&extra-param=null [NC,L]
-RewriteRule ^rest-api/([A-Za-z0-9-]+)/?$ api/api.php?module=$1&action=list&extra-param=null [NC,L]
+RewriteRule ^rest-api/([A-Za-z0-9-]+)/?$ api/api.php?module=$1&action=lista&extra-param=null [NC,L]

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div class = "inputData">
+        <form>
+            <table>
+                <tr ng-repeat="paramItem in paramsItems">
+                    <td>{{paramItem.printName}}</td>
+                    <td><input type="text" ng-model="paramItem.fieldValue" required></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    <button ng-click="addEntity()">Zapisz</button>
+</body>
+</html>
