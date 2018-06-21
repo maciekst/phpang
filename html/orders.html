@@ -6,29 +6,36 @@
 </head>
 <body>
     <div ng-controller="OrdersController" class="concretePanel">
-        <button ng-click="getAllOrders()">getAllOrders</button>
 
-        <div ng-show="ordersList.length > 0">
-            <table class="concreteTable">
-                <tr>
-                    <th>ID</th>
-                    <th>Ilość</th>
-                    <th>Identyfikator</th>
-                    <th>Sprzedaż</th>
-                    <th>Nazwa klienta</th>
-                    <th>Nazwa towaru</th>
-                    <th>Nazwa dostawcy</th>
-                </tr>
-                <tr ng-repeat="order in ordersList">
-                    <td>{{order.id}}</td>
-                    <td>{{order.ilosc}}</td>
-                    <td>{{order.identyfikator}}</td>
-                    <td>{{order.sprzedaz}}</td>
-                    <td>{{order.klient.nazwa}}</td>
-                    <td>{{order.towar.nazwa}}</td>
-                    <td>{{order.towar.dostawca.nazwa}}</td>
-                </tr>
+        <div class="crudButtons">
+            <table>
+                <tr><button ng-click="getAllOrders()">Lista zamówień</button></tr>
             </table>
+        </div>
+
+        <div class="dataPanel">
+            <div ng-show="ordersList.length > 0">
+                <table class="concreteTable">
+                    <tr>
+                        <th>ID</th>
+                        <th>Ilość</th>
+                        <th>Identyfikator</th>
+                        <th>Sprzedaż</th>
+                        <th>Nazwa klienta</th>
+                        <th>Nazwa towaru</th>
+                        <th>Nazwa dostawcy</th>
+                    </tr>
+                    <tr ng-repeat="order in ordersList">
+                        <td>{{order.id}}</td>
+                        <td>{{order.ilosc}}</td>
+                        <td>{{order.identyfikator}}</td>
+                        <td>{{order.sprzedaz}}</td>
+                        <td>{{order.klient.nazwa}}</td>
+                        <td>{{order.towar.nazwa}}</td>
+                        <td>{{order.towar.dostawca.nazwa}}</td>
+                    </tr>
+                </table>
+            </div>
         </div>
     </div>
 </body>

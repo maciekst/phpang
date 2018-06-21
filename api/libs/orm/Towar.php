@@ -68,7 +68,7 @@ class Towar {
 
     function dodajTowar($klient_arr) {
         $query = "INSERT INTO `towary`(`DOSTAWCAID`, `NAZWA`, `OPIS`, `ILOSC`) "
-                . "VALUES ('" . $klient_arr["dostawcaid"] . "','" . $klient_arr["nazwa"] . "',"
+                . "VALUES ('" . $klient_arr["dostawcaId"] . "','" . $klient_arr["nazwa"] . "',"
                 . "'" . $klient_arr["opis"] . "'," . $klient_arr["ilosc"] . ");";
         $stmt = $this->conn->prepare($query);
         return $stmt->execute();

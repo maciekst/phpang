@@ -6,27 +6,37 @@
 </head>
 <body>
     <div ng-controller="SuppliersController" class="concretePanel">
-        <button ng-click="getAllSuppliers()">getAllSuppliers</button>
 
-        <div ng-show="suppliers.length > 0">
-            <table class="concreteTable">
-                <tr>
-                    <th>ID</th>
-                    <th>Nazwa</th>
-                    <th>Adres</th>
-                    <th>Telefon</th>
-                    <th>Email</th>
-                </tr>
-                <tr ng-repeat="supplier in suppliers">
-                    <td>{{supplier.id}}</td>
-                    <td>{{supplier.nazwa}}</td>
-                    <td>{{supplier.adres}}</td>
-                    <td>{{supplier.telefon == null ? "---" : supplier.telefon }}</td>
-                    <td>{{supplier.email == null ? "---" : supplier.email }}</td>
-                </tr>
+        <div class="crudButtons">
+            <table>
+                <tr><td><button ng-click="getAllSuppliers()">Lista dostawców</button></td></tr>
+                <tr><td><button ng-click="toggleInputDataForm()">Dodaj nowego dostawcę</button></td></tr>
             </table>
         </div>
-        <div ng-include="'html/modules/add_entity_form.html'"></div>
+
+        <div class="dataPanel">
+            <div ng-show="suppliers.length > 0">
+                <table class="concreteTable">
+                    <tr>
+                        <th>ID</th>
+                        <th>Nazwa</th>
+                        <th>Adres</th>
+                        <th>Telefon</th>
+                        <th>Email</th>
+                        <th>Usuń</th>
+                    </tr>
+                    <tr ng-repeat="supplier in suppliers">
+                        <td>{{supplier.id}}</td>
+                        <td>{{supplier.nazwa}}</td>
+                        <td>{{supplier.adres}}</td>
+                        <td>{{supplier.telefon == null ? "---" : supplier.telefon }}</td>
+                        <td>{{supplier.email == null ? "---" : supplier.email }}</td>
+                        <td><button ng-click="deleteEntity(supplier.id)">X</button> </td>
+                    </tr>
+                </table>
+            </div>
+            <div ng-include="'html/modules/add_entity_form.html'" class="inputDataForm" ng-show="inputDataActive"></div>
+        </div>
     </div>
 </body>
 </html>

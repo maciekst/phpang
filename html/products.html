@@ -6,24 +6,61 @@
 </head>
 <body>
     <div ng-controller="ProductController" class="concretePanel">
-        <button ng-click="getAllProducts()">getAllProducts</button>
-        <div ng-show="products.length > 0">
-            <table class="concreteTable">
-                <tr>
-                    <th>ID</th>
-                    <th>Nazwa dostawcy</th>
-                    <th>Nazwa produktu</th>
-                    <th>Opis</th>
-                    <th>Ilość</th>
-                </tr>
-                <tr ng-repeat="product in products">
-                    <td>{{product.id}}</td>
-                    <td>{{product.dostawca.nazwa}}</td>
-                    <td>{{product.nazwa}}</td>
-                    <td>{{product.opis}}</td>
-                    <td>{{product.ilosc}}</td>
-                </tr>
+        <div class="crudButtons">
+            <table>
+                <tr><td><button ng-click="getAllProducts()">Lista produktów</button></td></tr>
+                <tr><td><button ng-click="toggleInputDataForm()">Dodaj produkt</button></td></tr>
             </table>
+        </div>
+
+        <div class="dataPanel">
+            <div ng-show="products.length > 0">
+                <table class="concreteTable">
+                    <tr>
+                        <th>ID</th>
+                        <th>Nazwa dostawcy</th>
+                        <th>Nazwa produktu</th>
+                        <th>Opis</th>
+                        <th>Ilość</th>
+                        <th>Usuń</th>
+                    </tr>
+                    <tr ng-repeat="product in products">
+                        <td>{{product.id}}</td>
+                        <td>{{product.dostawca.nazwa}}</td>
+                        <td>{{product.nazwa}}</td>
+                        <td>{{product.opis}}</td>
+                        <td>{{product.ilosc}}</td>
+                        <td><button ng-click="deleteEntity(product.id)">X</button> </td>
+                    </tr>
+                </table>
+            </div>
+            <div ng-show="inputDataActive" class="inputDataForm">
+                <table>
+                    <tr>
+                        <td>Nazwa</td>
+                        <td><input type="text" ng-model="name.fieldValue"></td>
+                    </tr>
+                    <tr>
+                        <td>{{supplier.printName}}</td>
+                        <td>
+                            <input list="tmpList" ng-model="supplier.fieldValue">
+                            <datalist id="tmpList">
+                                <option ng-repeat="supp in suppliers" ng-value="supp.id">{{supp.nazwa}}</option>
+                            </datalist>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Opis</td>
+                        <td><input type="text" ng-model="description.fieldValue"></td>
+                    </tr>
+                    <tr>
+                        <td>Ilość</td>
+                        <td><input type="text" ng-model="amount.fieldValue"></td>
+                    </tr>
+                </table>
+                <button ng-click="addEntity()">Zapisz</button>
+            </div>
         </div>
     </div>
 </body>

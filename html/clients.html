@@ -6,26 +6,35 @@
 </head>
 <body>
     <div ng-controller="ClientsController" class="concretePanel">
-        <button ng-click="getAllClients()">getAllClients</button>
-        <div ng-show="clientsList.length > 0">
-            <table class="concreteTable">
-                <tr>
-                    <th>ID</th>
-                    <th>Imię</th>
-                    <th>Adres</th>
-                    <th>Telefon</th>
-                    <th>Email</th>
-                </tr>
-                <tr ng-repeat="client in clientsList">
-                    <td>{{client.id}}</td>
-                    <td>{{client.nazwa}}</td>
-                    <td>{{client.adres}}</td>
-                    <td>{{client.telefon}}</td>
-                    <td>{{client.email}}</td>
-                </tr>
+        <div class="crudButtons">
+            <table>
+                <tr><td><button ng-click="getAllClients()">Lista klientów</button></td></tr>
+                <tr><td><button ng-click="toggleInputDataForm()">Dodaj nowego klienta</button></td></tr>
             </table>
         </div>
-        <div ng-include="'html/modules/add_entity_form.html'"></div>
+        <div class="dataPanel">
+            <div ng-show="clientsList.length > 0" class="dataTable">
+                <table class="concreteTable">
+                    <tr>
+                        <th>ID</th>
+                        <th>Imię</th>
+                        <th>Adres</th>
+                        <th>Telefon</th>
+                        <th>Email</th>
+                        <th>X</th>
+                    </tr>
+                    <tr ng-repeat="client in clientsList">
+                        <td>{{client.id}}</td>
+                        <td>{{client.nazwa}}</td>
+                        <td>{{client.adres}}</td>
+                        <td>{{client.telefon}}</td>
+                        <td>{{client.email}}</td>
+                        <td><button ng-click="deleteEntity(client.id)">X</button></td>
+                    </tr>
+                </table>
+            </div>
+            <div ng-include="'html/modules/add_entity_form.html'" class="inputDataForm" ng-show="inputDataActive"></div>
+        </div>
     </div>
 </body>
 </html>
